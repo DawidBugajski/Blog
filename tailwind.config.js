@@ -1,7 +1,11 @@
 module.exports = {
-  content: ["./src/**/*.tsx", "./src/**/*.ts"],
+  content: ['./src/**/*.tsx', './src/**/*.ts'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        nunito: ['Montserrat', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };

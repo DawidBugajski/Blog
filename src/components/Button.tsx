@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react';
 
-type buttonPlusProps = {
+type buttonProps = {
   children: ReactNode;
   className: string;
   onClick: () => void;
 };
 
-const Button = ({ children, className, onClick }: buttonPlusProps) => {
+function Button({ children, className, onClick }: buttonProps) {
   return (
     <button onClick={onClick} className={className}>
-      <span className='inline-flex items-center gap-2 ml-2'>{children}</span>
+      {children}
     </button>
   );
-};
+}
 
 export default Button;
