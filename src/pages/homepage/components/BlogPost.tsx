@@ -1,28 +1,23 @@
 import React from 'react';
 import Button from 'src/components/Button';
 import { useNavigate } from 'react-router-dom';
-
-type Post = {
-  id: string;
-  image?: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  blogPost: string;
-  user: { id: number; email: string; firstName: string; lastName: string };
-};
-
-type BlogPostProps = {
-  data: Post[];
-};
+import { Post, BlogPostProps } from 'src/types/postTypes';
+import { useAppDispatch } from 'src/redux/hooks';
+import { setSelectedPost } from 'src/redux/slices/postDetailsSlice';
 
 function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleClick = (post: Post) => {
+    dispatch(setSelectedPost(post));
+    navigate(`/${post.slug}`);
+  };
 
   return (
     <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
       {data.map((post: Post, i: number) => {
-        const { id, image, title, excerpt, user, slug } = post;
+        const { id, image, title, excerpt, user } = post;
         const { firstName, lastName } = user;
         const imageUrl = image
           ? image
@@ -50,7 +45,7 @@ function BlogPost({ data }: BlogPostProps) {
                 <span className='text-sm font-bold'>{`${firstName} ${lastName}`}</span>
               </div>
               <Button
-                onClick={() => navigate(`/home/${slug}`)}
+                onClick={() => handleClick(post)}
                 className='rounded-xl border-[1px] border-red-800 hover:cursor-pointer py-1 w-1/2 hover:bg-red-800 hover:text-white transition-colors duration-150'
               >
                 Read more
