@@ -11,3 +11,8 @@ body {
 .logo {
   font-family: 'Lobster', cursive;
 }
+
+button,
+input {
+  outline: none;
+}

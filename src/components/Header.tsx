@@ -5,14 +5,13 @@ import {
   selectIsLoggedIn,
   setLoggedOut,
 } from 'src/redux/slices/loginSlice';
-import { selectUser } from 'src/redux/slices/loginSlice';
+
 import Navbar from 'src/pages/Homepage/components/Navbar';
 import Button from './Button';
 import Logo from './Logo';
 
 function Header() {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
-  const user = useAppSelector(selectUser);
 
   const dispatch = useAppDispatch();
 
@@ -24,7 +23,7 @@ function Header() {
       <Logo />
       <div className='flex items-center justify-end w-full gap-10'>
         <Navbar />
-        {isLoggedIn && <span className=''>Welcome {user?.firstName}!</span>}
+
         <Button
           onClick={handleLoginClick}
           className='px-3 py-2 font-bold text-white transition-all duration-150 rounded-lg outline-none hover:text-sky-800 bg-sky-800 hover:bg-white'

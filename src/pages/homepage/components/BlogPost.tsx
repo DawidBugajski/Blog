@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'src/components/Button';
+import EditPost from './EditPost';
 import { useNavigate } from 'react-router-dom';
 import { Post, BlogPostProps } from 'src/types/postTypes';
 import { getPlaceholderImage } from 'src/utils/helpers/getPlaceholderImage';
+import { useAppSelector } from 'src/redux/hooks';
+import { selectIsLoggedIn } from 'src/redux/slices/loginSlice';
+import { API_BASE_URL } from 'src/utils/constans';
+import axios from 'axios';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const [editingPost, setEditingPost] = useState<Post | null>(null);
 
   const handleClick = (post: Post) => {
     navigate(`/${post.slug}`, { state: { post } });
+  };
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    (id: string) => {
+      const token = localStorage.getItem('token');
+      return axios.delete(`${API_BASE_URL}post/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['blogPosts']);
+      },
+    }
+  );
+
+  const handleDeletePost = (id: string) => {
+    mutation.mutate(id);
+    console.log(`deleted post ${id}`);
+  };
+
+  const handleStartEditing = (post: Post) => {
+    setEditingPost(post);
   };
 
   return (
@@ -18,6 +50,10 @@ function BlogPost({ data }: BlogPostProps) {
         const { firstName, lastName } = user;
         const imageUrl = getPlaceholderImage(image || '');
         const postClassName = i < 5 ? 'border-l-4 border-blue-500' : '';
+
+        if (editingPost && post.id === editingPost.id) {
+          return <EditPost key={post.id} post={post} />;
+        }
 
         return (
           <div
@@ -50,6 +86,22 @@ function BlogPost({ data }: BlogPostProps) {
               >
                 Read more
               </Button>
+              {isLoggedIn && (
+                <div className='flex gap-3'>
+                  <Button
+                    className='px-3 py-1 text-white bg-red-800 rounded-lg'
+                    onClick={() => handleDeletePost(id)}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    className='bg-pink-400'
+                    onClick={() => handleStartEditing(post)}
+                  >
+                    Edit
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         );
