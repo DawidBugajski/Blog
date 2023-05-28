@@ -23,7 +23,6 @@ function Header() {
       <Logo />
       <div className='flex items-center justify-end w-full gap-10'>
         <Navbar />
-
         <Button
           onClick={handleLoginClick}
           className='px-3 py-2 font-bold text-white transition-all duration-150 rounded-lg outline-none hover:text-sky-800 bg-sky-800 hover:bg-white'
