@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'src/components/Button';
 import { useNavigate } from 'react-router-dom';
 import { Post, BlogPostProps } from 'src/types/postTypes';
+import { getPlaceholderImage } from 'src/utils/helpers/getPlaceholderImage';
 
 function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
@@ -15,9 +16,7 @@ function BlogPost({ data }: BlogPostProps) {
       {data.map((post: Post, i: number) => {
         const { id, image, title, excerpt, user } = post;
         const { firstName, lastName } = user;
-        const imageUrl = image
-          ? image
-          : '/src/assets/images/placeholder-image.webp';
+        const imageUrl = getPlaceholderImage(image || '');
         const postClassName = i < 5 ? 'border-l-4 border-blue-500' : '';
 
         return (

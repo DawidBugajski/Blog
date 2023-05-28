@@ -5,7 +5,7 @@ import Logo from './Logo';
 
 function Header() {
   return (
-    <div className='z-10 bg-gradient-to-r from-[#dae2f8] to-[#d6a4a4] sticky top-0 flex items-center p-2 border-b-2 border-black'>
+    <div className='sticky top-0 z-10 flex items-center p-2 border-b-2 border-black bg-gradient-to-b from-sky-400 to-sky-200'>
       <Logo />
       <div className='flex items-center justify-end w-full gap-10'>
         <Navbar />

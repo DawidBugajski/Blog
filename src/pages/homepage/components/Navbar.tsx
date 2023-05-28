@@ -20,24 +20,36 @@ function Navbar() {
           <button className='fixed top-0 right-0 z-40 m-4 text-2xl text-black'>
             <FaTimes onClick={() => setIsOpen(false)} />
           </button>
-          <ul className='fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-4 bg-blue-100'>
+          <ul className='fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full gap-4 bg-gradient-to-b from-sky-400 to-sky-200'>
             <li>
-              <a href='#' className='text-black hover:text-red-600'>
+              <a
+                href='#'
+                className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+              >
                 Homepage
               </a>
             </li>
             <li>
-              <a href='#' className='text-black hover:text-red-600'>
+              <a
+                href='#'
+                className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+              >
                 About me
               </a>
             </li>
             <li>
-              <a href='#' className='text-black hover:text-red-600'>
+              <a
+                href='#'
+                className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+              >
                 Inspirations
               </a>
             </li>
             <li>
-              <a href='#' className='text-black hover:text-red-600'>
+              <a
+                href='#'
+                className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+              >
                 Contact
               </a>
             </li>
@@ -47,22 +59,34 @@ function Navbar() {
 
       <ul className='items-center hidden gap-4 mt-4 md:flex md:mt-0'>
         <li>
-          <a href='#' className='text-black hover:text-red-600'>
+          <a
+            href='#'
+            className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+          >
             Homepage
           </a>
         </li>
         <li>
-          <a href='#' className='text-black hover:text-red-600'>
+          <a
+            href='#'
+            className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+          >
             About me
           </a>
         </li>
         <li>
-          <a href='#' className='text-black hover:text-red-600'>
+          <a
+            href='#'
+            className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+          >
             Inspirations
           </a>
         </li>
         <li>
-          <a href='#' className='text-black hover:text-red-600'>
+          <a
+            href='#'
+            className='font-bold transition-all duration-150 rounded-lg text-text-sky-800 hover:bg-sky-800 hover:text-white hover:px-3 hover:py-2'
+          >
             Contact
           </a>
         </li>
