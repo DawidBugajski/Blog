@@ -4,6 +4,7 @@ import { getPlaceholderImage } from 'src/utils/helpers/getPlaceholderImage';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { API_BASE_URL } from 'src/utils/constans';
+import { FaTimes } from 'react-icons/fa';
 
 type EditPostFormProps = {
   post: Post;
@@ -44,32 +45,49 @@ function EditPost({ post, setEditingPost }: EditPostFormProps) {
   };
 
   return (
-    <div className='p-2 bg-purple-700'>
-      <form className='flex flex-col' onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title</label>
+    <div className='relative rounded-lg p-8 my-2 bg-gradient-to-r from-blue-500 to to-blue-900 h-[400px]'>
+      <form className='flex flex-col h-full' onSubmit={handleSubmit}>
+        <label className='text-white' htmlFor='title'>
+          Title
+        </label>
         <input
+          className='p-1 mb-1 rounded-lg'
           id='title'
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-
-        <label htmlFor='blogPost'>Post</label>
+        <label className='text-white ' htmlFor='blogPost'>
+          Post
+        </label>
         <textarea
           id='blogPost'
           value={blogPost}
           onChange={(e) => setBlogPost(e.target.value)}
           required
+          className='p-1 mb-1 rounded-lg grow'
         />
-
-        <label htmlFor='image'>Image URL</label>
+        <label className='text-white' htmlFor='image'>
+          Image URL
+        </label>
         <input
+          className='p-1 mb-1 rounded-lg'
           id='image'
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-
-        <button type='submit'>Submit</button>
+        <button
+          className='w-1/2 px-3 py-1 mx-auto mt-2 text-white rounded-lg bg-neutral-800'
+          type='submit'
+        >
+          Submit
+        </button>
+        <button
+          onClick={() => setEditingPost(null)}
+          className='absolute flex items-center justify-center p-2 font-bold text-black transition-colors duration-150 transform bg-red-600 rounded-full hover:bg-red-900 top-4 right-4'
+        >
+          <FaTimes className='w-3 h-3 text-white' />
+        </button>
       </form>
     </div>
   );

@@ -93,7 +93,7 @@ function BlogPost({ data }: BlogPostProps) {
                 Read more
               </Button>
               {isLoggedIn && (
-                <div className='relative flex -bottom-14'>
+                <div className='flex mt-10'>
                   <Button
                     className='w-1/2 px-3 py-1 mr-auto text-white bg-green-600 rounded-lg hover:bg-green-700'
                     onClick={() => handleStartEditing(post)}
@@ -101,7 +101,7 @@ function BlogPost({ data }: BlogPostProps) {
                     Edit
                   </Button>
                   <Button
-                    className='w-1/2 px-3 py-1 ml-6 text-white transition-colors duration-150 bg-red-800 rounded-lg hover:text-red-500 hover:bg-black'
+                    className='w-1/2 px-3 py-1 text-white transition-colors duration-150 bg-red-800 rounded-lg hover:text-red-500 hover:bg-black'
                     onClick={() => handleDeletePost(id)}
                   >
                     Delete
