@@ -3,9 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Post } from 'src/types/postTypes';
 import { RootState } from 'src/redux/store';
 
-export interface PostDetailsState {
+export type PostDetailsState = {
   selectedPost: Post | null;
-}
+};
 
 const initialState: PostDetailsState = {
   selectedPost: null,
