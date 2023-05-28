@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks';
 import {
-  setClosenModal,
+  setCloseModal,
   selectOpenLoginModal,
-} from 'src/redux/slices/loginModalSlice';
-import 'tailwindcss/tailwind.css';
+  setLoggedIn,
+} from 'src/redux/slices/loginSlice';
+import { API_BASE_URL } from 'src/utils/constans';
+import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 
 function LoginModal() {
-  const isOpen = useAppSelector(selectOpenLoginModal);
   const dispatch = useAppDispatch();
 
+  const isOpen = useAppSelector(selectOpenLoginModal);
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
   const handleCloseModal = () => {
-    dispatch(setClosenModal());
+    dispatch(setCloseModal());
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(`${API_BASE_URL}login`, {
+        email,
+        password,
+      });
+      if (response.data.token) {
+        dispatch(setLoggedIn(response.data));
+        handleCloseModal();
+        console.log(response.data.token);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (!isOpen) {
@@ -28,7 +52,7 @@ function LoginModal() {
       <div className='relative z-10 p-[2px] bg-blue-500 rounded-lg'>
         <div className='h-[350px] w-[500px] flex flex-col gap-2 p-8 font-mono text-lg text-white bg-black rounded-lg '>
           <h2 className='mb-4 text-xl font-bold text-center'>Login</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label htmlFor='email' className='block mb-2'>
               Email
               <input
@@ -36,6 +60,8 @@ function LoginModal() {
                 id='email'
                 className='block w-full p-2 text-black border rounded'
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </label>
             <label htmlFor='password' className='block mb-4'>
@@ -43,6 +69,8 @@ function LoginModal() {
               <input
                 type='password'
                 id='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className='block w-full p-2 text-black border rounded'
                 required
               />

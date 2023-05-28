@@ -1,12 +1,32 @@
 import { configureStore } from '@reduxjs/toolkit';
 import PostDetailsReducer from '../redux/slices/postDetailsSlice';
-import loginModalReducer from './slices/loginModalSlice';
+import loginReducer, { initialState } from './slices/loginSlice';
+import { LoginProps } from 'src/types/loginTypes';
+
+const token = localStorage.getItem('token');
+
+let preloadedState: { login: LoginProps };
+
+if (token) {
+  preloadedState = {
+    login: {
+      ...initialState,
+      isLoggedIn: true,
+      token: token,
+    },
+  };
+} else {
+  preloadedState = {
+    login: initialState,
+  };
+}
 
 export const store = configureStore({
   reducer: {
     selectedPost: PostDetailsReducer,
-    loginModal: loginModalReducer,
+    login: loginReducer,
   },
+  preloadedState, // adding loaded data to store configuration
 });
 
 export type AppDispatch = typeof store.dispatch;
