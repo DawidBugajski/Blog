@@ -52,7 +52,13 @@ function BlogPost({ data }: BlogPostProps) {
         const postClassName = i < 5 ? 'border-l-4 border-blue-500' : '';
 
         if (editingPost && post.id === editingPost.id) {
-          return <EditPost key={post.id} post={post} />;
+          return (
+            <EditPost
+              key={post.id}
+              post={post}
+              setEditingPost={setEditingPost}
+            />
+          );
         }
 
         return (

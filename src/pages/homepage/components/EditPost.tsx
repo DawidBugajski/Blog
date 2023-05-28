@@ -7,9 +7,10 @@ import { API_BASE_URL } from 'src/utils/constans';
 
 type EditPostFormProps = {
   post: Post;
+  setEditingPost: (post: Post | null) => void;
 };
 
-function EditPost({ post }: EditPostFormProps) {
+function EditPost({ post, setEditingPost }: EditPostFormProps) {
   const [title, setTitle] = useState<string>(post.title);
   const [blogPost, setBlogPost] = useState<string>(post.blogPost);
   const [image, setImage] = useState<string>(
@@ -21,13 +22,14 @@ function EditPost({ post }: EditPostFormProps) {
   const editPostMutation = useMutation(
     (editedPost: Post) => {
       const token = localStorage.getItem('token');
-      return axios.put(`${API_BASE_URL}/posts/${editedPost.id}`, editedPost, {
+      return axios.put(`${API_BASE_URL}post/${editedPost.id}`, editedPost, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },
     {
       onSuccess: () => {
         queryClient.invalidateQueries(['blogPosts']);
+        setEditingPost(null);
       },
       onError: (error) => {
         console.error('Failed to edit post:', error);
