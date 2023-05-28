@@ -63,7 +63,7 @@ function BlogPost({ data }: BlogPostProps) {
 
         return (
           <div
-            className={`relative group shadow-2xl rounded-2xl my-2 flex items-start justify-center ${postClassName} h-[400px] w-full gap-4 bg-white overflow-auto`}
+            className={`relative group shadow-2xl rounded-2xl my-2 flex items-start justify-center ${postClassName} min-h-[400px] w-full gap-4 bg-white overflow-auto`}
             key={id}
           >
             <div className='w-1/2 h-full overflow-hidden'>
@@ -73,7 +73,7 @@ function BlogPost({ data }: BlogPostProps) {
                 className='object-cover w-full h-full transition-all duration-300 rounded-tl-2xl rounded-bl-2xl group-hover:scale-110 group-hover:blur-sm'
               />
             </div>
-            <div className='flex flex-col justify-center w-1/2 h-full px-4'>
+            <div className='relative flex flex-col justify-center w-1/2 h-full px-4'>
               {postClassName && (
                 <span className='absolute px-2 py-1 text-lg text-white rounded-full bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
                   new!
@@ -93,18 +93,18 @@ function BlogPost({ data }: BlogPostProps) {
                 Read more
               </Button>
               {isLoggedIn && (
-                <div className='flex gap-3'>
+                <div className='relative flex -bottom-14'>
                   <Button
-                    className='px-3 py-1 text-white bg-red-800 rounded-lg'
-                    onClick={() => handleDeletePost(id)}
-                  >
-                    Delete
-                  </Button>
-                  <Button
-                    className='bg-pink-400'
+                    className='w-1/2 px-3 py-1 mr-auto text-white bg-green-600 rounded-lg hover:bg-green-700'
                     onClick={() => handleStartEditing(post)}
                   >
                     Edit
+                  </Button>
+                  <Button
+                    className='w-1/2 px-3 py-1 ml-6 text-white transition-colors duration-150 bg-red-800 rounded-lg hover:text-red-500 hover:bg-black'
+                    onClick={() => handleDeletePost(id)}
+                  >
+                    Delete
                   </Button>
                 </div>
               )}

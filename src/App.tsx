@@ -9,7 +9,7 @@ import { useAppSelector } from 'src/redux/hooks';
 function App() {
   const isOpen = useAppSelector(selectOpenLoginModal);
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-screen overflow-hidden'>
       <Header />
       <PageRoutes />
       {isOpen && <LoginModal />}
