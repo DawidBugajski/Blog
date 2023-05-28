@@ -1,17 +1,26 @@
-import React from 'react';
-import { useAppSelector } from 'src/redux/hooks';
-import { selectSelectedPost } from 'src/redux/slices/postDetailsSlice';
+import React, { useEffect, useState } from 'react';
+
+import { useLocation } from 'react-router-dom';
+import { Post } from 'src/types/postTypes';
 
 function PostDetails() {
-  const selectedPost = useAppSelector(selectSelectedPost);
+  const location = useLocation();
+  const [currentPost, setCurrentPost] = useState<Post | null>(null);
 
-  if (!selectedPost) {
+  useEffect(() => {
+    if (location?.state?.post) {
+      setCurrentPost(location.state.post);
+    }
+  }, [location]);
+
+  if (!currentPost) {
     return <div>No post selected</div>;
   }
 
+  const { title } = currentPost;
   return (
     <div>
-      <h1>{selectedPost.title}</h1>
+      <h1>{currentPost ? title : 'Loading...'}</h1>
     </div>
   );
 }

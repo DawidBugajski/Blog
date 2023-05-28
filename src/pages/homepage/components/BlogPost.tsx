@@ -2,16 +2,12 @@ import React from 'react';
 import Button from 'src/components/Button';
 import { useNavigate } from 'react-router-dom';
 import { Post, BlogPostProps } from 'src/types/postTypes';
-import { useAppDispatch } from 'src/redux/hooks';
-import { setSelectedPost } from 'src/redux/slices/postDetailsSlice';
 
 function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const handleClick = (post: Post) => {
-    dispatch(setSelectedPost(post));
-    navigate(`/${post.slug}`);
+    navigate(`/${post.slug}`, { state: { post } });
   };
 
   return (
@@ -22,11 +18,11 @@ function BlogPost({ data }: BlogPostProps) {
         const imageUrl = image
           ? image
           : '/src/assets/images/placeholder-image.webp';
-        const postClassName = i < 5 ? '' : '';
+        const postClassName = i < 5 ? 'border-l-4 border-blue-500' : '';
 
         return (
           <div
-            className={`group shadow-2xl rounded-2xl my-2 flex items-start justify-center ${postClassName} h-[400px] w-full gap-4 bg-white overflow-auto`}
+            className={`relative group shadow-2xl rounded-2xl my-2 flex items-start justify-center ${postClassName} h-[400px] w-full gap-4 bg-white overflow-auto`}
             key={id}
           >
             <div className='w-1/2 h-full overflow-hidden'>
@@ -37,6 +33,11 @@ function BlogPost({ data }: BlogPostProps) {
               />
             </div>
             <div className='flex flex-col justify-center w-1/2 h-full px-4'>
+              {postClassName && (
+                <span className='absolute px-2 py-1 text-lg text-white rounded-full bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
+                  new!
+                </span>
+              )}
               <strong className='mb-2 text-lg'>{title}</strong>
               <p className='text-sm'>{excerpt}</p>
               <hr className='my-3' />
