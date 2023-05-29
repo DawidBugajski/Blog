@@ -11,7 +11,7 @@ function PageRoutes() {
   return (
     <Routes>
       <Route path='/' element={<Homepage />} />
-      <Route path='/about' element={<AboutMe title={'Dawid Bugajski'} />} />
+      <Route path='/about' element={<AboutMe />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/inspirations' element={<Inspirations />} />
       <Route path='/:slug' element={<PostDetails />} />

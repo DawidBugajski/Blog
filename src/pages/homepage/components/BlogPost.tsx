@@ -80,7 +80,7 @@ function BlogPost({ data }: BlogPostProps) {
                   new!
                 </span>
               )}
-              <strong className='mb-2 text-lg '>{title}</strong>
+              <strong className='mb-2 text-lg line-clamp'>{title}</strong>
               <p className='text-sm'>{excerpt}</p>
               <hr className='w-3/4 my-3 border-black' />
               <div className='flex mb-2'>

@@ -1,11 +1,7 @@
 import React from 'react';
 
-type AboutMeProps = {
-  title: string;
-};
-
-function AboutMe({ title }: AboutMeProps) {
-  return <div>{title}</div>;
+function AboutMe() {
+  return <div>About me</div>;
 }
 
 export default AboutMe;
