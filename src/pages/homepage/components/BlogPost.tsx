@@ -45,7 +45,7 @@ function BlogPost({ data }: BlogPostProps) {
   };
 
   return (
-    <div className='grid grid-cols-1 gap-6 md:grid-cols-2 '>
+    <div className='grid grid-cols-1 gap-6 lg:grid-cols-2 '>
       {data.map((post: Post, i: number) => {
         const { id, image, title, excerpt, user } = post;
         const { firstName, lastName } = user;
@@ -64,19 +64,19 @@ function BlogPost({ data }: BlogPostProps) {
 
         return (
           <div
-            className={`overflow-hidden gap-2 pt-2 md:pt-0 relative group shadow-2xl rounded-2xl my-2 flex md:flex-row flex-col-reverse items-start justify-center ${postClassName} min-h-[400px] w-full md:gap-4 bg-white`}
+            className={`overflow-hidden gap-2 pt-2 lg:pt-0 relative group shadow-2xl rounded-2xl my-2 flex lg:flex-row flex-col-reverse items-start justify-center ${postClassName} min-h-[400px] w-full xl:gap-4 bg-white`}
             key={id}
           >
-            <div className='w-full h-full overflow-hidden md:w-1/2'>
+            <div className='w-full h-full overflow-hidden lg:w-1/2'>
               <img
                 src={imageUrl}
                 alt={title}
                 className='object-cover w-full h-full transition-all duration-300 rounded-tl-2xl rounded-bl-2xl group-hover:scale-110 group-hover:blur-sm'
               />
             </div>
-            <div className='relative flex flex-col justify-center w-full h-full px-4 md:w-1/2'>
+            <div className='relative flex flex-col justify-center w-full h-full px-4 lg:px-2 xl:px-4 lg:w-1/2'>
               {postClassName && (
-                <span className='absolute px-2 py-1 text-sm text-white rounded-full cursor-default md:text-lg bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
+                <span className='absolute px-2 py-1 text-sm text-white rounded-full cursor-default lg:text-lg bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
                   new!
                 </span>
               )}
@@ -97,13 +97,13 @@ function BlogPost({ data }: BlogPostProps) {
               {isLoggedIn && (
                 <div className='flex gap-4 my-3'>
                   <Button
-                    className='w-10 p-3 text-white bg-green-600 rounded-full right-16 md:absolute bottom-4 hover:bg-green-700'
+                    className='w-10 p-3 text-white bg-green-600 rounded-full right-16 lg:absolute bottom-4 hover:bg-green-700'
                     onClick={() => handleStartEditing(post)}
                   >
                     <FaEdit />
                   </Button>
                   <Button
-                    className='w-10 p-3 text-white transition-colors duration-150 bg-red-800 rounded-full md:absolute right-4 bottom-4 hover:text-red-500 hover:bg-black'
+                    className='w-10 p-3 text-white transition-colors duration-150 bg-red-800 rounded-full lg:absolute right-4 bottom-4 hover:text-red-500 hover:bg-black'
                     onClick={() => handleDeletePost(id)}
                   >
                     <FaTrash />
