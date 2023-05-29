@@ -11,8 +11,11 @@ function App() {
   return (
     <div className='flex flex-col min-h-screen overflow-hidden'>
       <Header />
-      <PageRoutes />
-      {isOpen && <LoginModal />}
+      <div className='px-2'>
+        <PageRoutes />
+        {isOpen && <LoginModal />}
+      </div>
+
       <Footer />
     </div>
   );

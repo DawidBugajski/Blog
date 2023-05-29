@@ -35,9 +35,9 @@ function LoginModal() {
         handleCloseModal();
       }
     } catch (error) {
-      console.log(error);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setError((error as any).message);
+      setTimeout(() => setError(null), 2000);
     }
   };
 
@@ -51,8 +51,8 @@ function LoginModal() {
         onClick={handleCloseModal}
         className='absolute inset-0 bg-black opacity-75'
       ></div>
-      <div className='relative z-10 p-[2px] bg-blue-500 rounded-lg'>
-        <div className='min-h-[350px] w-[500px] flex flex-col gap-2 p-8 font-mono text-lg text-white bg-black rounded-lg '>
+      <div className='relative z-10 p-[2px] bg-blue-500 rounded-lg w-full'>
+        <div className='md:min-h-[350px] md:w-[500px] flex flex-col gap-2 p-8 font-mono text-lg text-white bg-black rounded-lg '>
           <h2 className='mb-4 text-xl font-bold text-center'>Login</h2>
           <form onSubmit={handleSubmit}>
             <label htmlFor='email' className='block mb-2'>
@@ -87,7 +87,7 @@ function LoginModal() {
               <FaTimes className='w-5 h-5 text-white' />
             </button>
           </form>
-          {error && <span className='mt-3 -mb-3 text-red-500 '>{error}</span>}
+          {error && <span className='mt-3 -mb-3 text-red-500'>{error}</span>}
         </div>
       </div>
     </div>

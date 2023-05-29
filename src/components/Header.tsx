@@ -21,11 +21,11 @@ function Header() {
   return (
     <div className='sticky top-0 z-10 flex items-center p-2 border-b-2 border-black bg-gradient-to-b from-sky-400 to-sky-200'>
       <Logo />
-      <div className='flex items-center justify-end w-full gap-10'>
+      <div className='flex items-center justify-center w-full md:justify-end md:gap-10'>
         <Navbar />
         <Button
           onClick={handleLoginClick}
-          className='px-3 py-2 font-bold text-white transition-all duration-150 rounded-lg outline-none hover:text-sky-800 bg-sky-800 hover:bg-white'
+          className='px-3 py-2 ml-6 mr-auto font-bold text-white transition-all duration-150 rounded-lg outline-none -order-1 hover:text-sky-800 bg-sky-800 hover:bg-white'
         >
           {isLoggedIn ? 'Log out' : 'Login'}
         </Button>

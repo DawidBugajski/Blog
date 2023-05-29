@@ -63,17 +63,17 @@ function BlogPost({ data }: BlogPostProps) {
 
         return (
           <div
-            className={`relative group shadow-2xl rounded-2xl my-2 flex items-start justify-center ${postClassName} min-h-[400px] w-full gap-4 bg-white overflow-auto`}
+            className={`relative group shadow-2xl rounded-2xl my-2 flex md:flex-row flex-col-reverse items-start justify-center ${postClassName} min-h-[400px] w-full gap-4 bg-white overflow-auto`}
             key={id}
           >
-            <div className='w-1/2 h-full overflow-hidden'>
+            <div className='w-full h-full overflow-hidden md:w-1/2'>
               <img
                 src={imageUrl}
                 alt={title}
                 className='object-cover w-full h-full transition-all duration-300 rounded-tl-2xl rounded-bl-2xl group-hover:scale-110 group-hover:blur-sm'
               />
             </div>
-            <div className='relative flex flex-col justify-center w-1/2 h-full px-4'>
+            <div className='relative flex flex-col justify-center w-full h-full px-4 md:w-1/2'>
               {postClassName && (
                 <span className='absolute px-2 py-1 text-lg text-white rounded-full bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
                   new!
