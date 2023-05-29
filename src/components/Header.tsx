@@ -25,7 +25,7 @@ function Header() {
         <Navbar />
         <Button
           onClick={handleLoginClick}
-          className='px-3 py-2 ml-6 mr-auto font-bold text-white transition-all duration-150 rounded-lg outline-none -order-1 hover:text-sky-800 bg-sky-800 hover:bg-white'
+          className='px-3 py-2 ml-6 mr-auto text-sm font-bold text-white transition-all duration-150 rounded-lg outline-none md:text-base md:mr-0 -order-1 md:order-1 hover:text-sky-800 bg-sky-800 hover:bg-white'
         >
           {isLoggedIn ? 'Log out' : 'Login'}
         </Button>

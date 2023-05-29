@@ -9,6 +9,7 @@ import { selectIsLoggedIn } from 'src/redux/slices/loginSlice';
 import { API_BASE_URL } from 'src/utils/constans';
 import axios from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { FaTrash, FaEdit, FaArrowRight } from 'react-icons/fa';
 
 function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
@@ -44,12 +45,12 @@ function BlogPost({ data }: BlogPostProps) {
   };
 
   return (
-    <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+    <div className='grid grid-cols-1 gap-6 md:grid-cols-2 '>
       {data.map((post: Post, i: number) => {
         const { id, image, title, excerpt, user } = post;
         const { firstName, lastName } = user;
         const imageUrl = getPlaceholderImage(image || '');
-        const postClassName = i < 5 ? 'border-l-4 border-blue-500' : '';
+        const postClassName = i < 5 ? 'bg-[#EBF0F5] ' : '';
 
         if (editingPost && post.id === editingPost.id) {
           return (
@@ -63,7 +64,7 @@ function BlogPost({ data }: BlogPostProps) {
 
         return (
           <div
-            className={`relative group shadow-2xl rounded-2xl my-2 flex md:flex-row flex-col-reverse items-start justify-center ${postClassName} min-h-[400px] w-full gap-4 bg-white overflow-auto`}
+            className={`overflow-hidden gap-2 pt-2 md:pt-0 relative group shadow-2xl rounded-2xl my-2 flex md:flex-row flex-col-reverse items-start justify-center ${postClassName} min-h-[400px] w-full md:gap-4 bg-white`}
             key={id}
           >
             <div className='w-full h-full overflow-hidden md:w-1/2'>
@@ -75,36 +76,37 @@ function BlogPost({ data }: BlogPostProps) {
             </div>
             <div className='relative flex flex-col justify-center w-full h-full px-4 md:w-1/2'>
               {postClassName && (
-                <span className='absolute px-2 py-1 text-lg text-white rounded-full bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
+                <span className='absolute px-2 py-1 text-sm text-white rounded-full cursor-default md:text-lg bg-gradient-to-r from-blue-500 to to-blue-900 right-2 top-2'>
                   new!
                 </span>
               )}
-              <strong className='mb-2 text-lg'>{title}</strong>
+              <strong className='mb-2 text-lg '>{title}</strong>
               <p className='text-sm'>{excerpt}</p>
-              <hr className='my-3' />
+              <hr className='w-3/4 my-3 border-black' />
               <div className='flex mb-2'>
                 <p className='text-sm'>Autor:&nbsp;</p>
                 <span className='text-sm font-bold'>{`${firstName} ${lastName}`}</span>
               </div>
               <Button
                 onClick={() => handleClick(post)}
-                className='rounded-xl border-[1px] border-red-800 hover:cursor-pointer py-1 w-1/2 hover:bg-red-800 hover:text-white transition-colors duration-150'
+                className='inline-flex items-center w-1/2 gap-2 py-1 transition-all duration-150 rounded-xl hover:cursor-pointer hover:gap-6 hover:underline hov2er:underline-offset-'
               >
-                Read more
+                <span>Read more</span>
+                <FaArrowRight className='w-4 h-4' />
               </Button>
               {isLoggedIn && (
-                <div className='flex mt-10'>
+                <div className='flex gap-4 my-3'>
                   <Button
-                    className='w-1/2 px-3 py-1 mr-auto text-white bg-green-600 rounded-lg hover:bg-green-700'
+                    className='w-10 p-3 text-white bg-green-600 rounded-full right-16 md:absolute bottom-4 hover:bg-green-700'
                     onClick={() => handleStartEditing(post)}
                   >
-                    Edit
+                    <FaEdit />
                   </Button>
                   <Button
-                    className='w-1/2 px-3 py-1 text-white transition-colors duration-150 bg-red-800 rounded-lg hover:text-red-500 hover:bg-black'
+                    className='w-10 p-3 text-white transition-colors duration-150 bg-red-800 rounded-full md:absolute right-4 bottom-4 hover:text-red-500 hover:bg-black'
                     onClick={() => handleDeletePost(id)}
                   >
-                    Delete
+                    <FaTrash />
                   </Button>
                 </div>
               )}

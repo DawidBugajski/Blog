@@ -1,43 +1,27 @@
 import React from 'react';
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 function Error() {
+  const navigate = useNavigate();
+
   return (
-    <div className='min-h-screen flex-col error-container flex justify-center bg-[#151515] items-center gap-8'>
-      <h1 className='text-8xl font-extrabold text-transparent lg:animate-bounce 2xl:text-[200px] bg-clip-text bg-gradient-to-r from-main-red to-main-dark-red'>
-        Oops !
-      </h1>
-      <p className='text-2xl 2xl:text-3xl'>Something went wrong</p>
-      {/* {message && (
-        <p className='font-mono text-3xl font-bold uppercase 2lg:text-6xl'>
-          {message}
-        </p>
-      )} */}
-      <button className='text-xl px-5 py-1.5 2xl:text-2xl uppercase rounded-full bg-main-dark-red hover:text-main-dark-red hover:bg-main-gray transition-colors duration-150 border-transparent border-2 hover:border-main-dark-red'>
-        {/* <Link to='/'>Go Home</Link> */}
-      </button>
+    <div className='flex flex-col items-center justify-center h-[70vh]'>
+      <h1 className='font-bold text-blue-600 text-9xl'>404</h1>
+      <h2 className='mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl'>
+        <span className='text-red-500'>Oops!</span> Page not found
+      </h2>
+      <p className='mb-8 text-center text-gray-500 md:text-lg'>
+        The page you’re looking for doesn’t exist.
+      </p>
+      <Button
+        onClick={() => navigate('/')}
+        className='px-6 py-2 text-sm font-semibold text-blue-800 transition-colors duration-200 bg-blue-100 hover:text-blue-100 hover:bg-blue-800'
+      >
+        Go home
+      </Button>
     </div>
   );
 }
 
 export default Error;
-
-// const Error = ({ message }) => {
-//   return (
-//     <div className='min-h-screen flex-col error-container flex justify-center bg-[#151515] items-center gap-8'>
-//       <h1 className='text-8xl font-extrabold text-transparent lg:animate-bounce 2xl:text-[200px] bg-clip-text bg-gradient-to-r from-main-red to-main-dark-red'>
-//         Oops !
-//       </h1>
-//       <p className='text-2xl 2xl:text-3xl'>Something went wrong</p>
-//       {message && (
-//         <p className='font-mono text-3xl font-bold uppercase 2lg:text-6xl'>
-//           {message}
-//         </p>
-//       )}
-//       <button className='text-xl px-5 py-1.5 2xl:text-2xl uppercase rounded-full bg-main-dark-red hover:text-main-dark-red hover:bg-main-gray transition-colors duration-150 border-transparent border-2 hover:border-main-dark-red'>
-//         <Link to='/'>Go Home</Link>
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default Error;

@@ -45,7 +45,7 @@ function EditPost({ post, setEditingPost }: EditPostFormProps) {
   };
 
   return (
-    <div className='relative rounded-lg p-8 my-2 bg-gradient-to-r from-blue-500 to to-blue-900 h-[400px]'>
+    <div className='relative rounded-lg p-6 my-2 bg-gradient-to-r from-blue-500 to to-blue-900 h-[400px]'>
       <form className='flex flex-col h-full' onSubmit={handleSubmit}>
         <label className='text-white' htmlFor='title'>
           Title
@@ -77,14 +77,14 @@ function EditPost({ post, setEditingPost }: EditPostFormProps) {
           onChange={(e) => setImage(e.target.value)}
         />
         <button
-          className='w-1/2 px-3 py-1 mx-auto mt-2 text-white rounded-lg bg-neutral-800'
+          className='w-1/2 px-3 py-1 mx-auto mt-4 text-white transition-colors duration-150 rounded-lg bg-neutral-800 hover:text-neutral-800 hover:bg-white'
           type='submit'
         >
           Submit
         </button>
         <button
           onClick={() => setEditingPost(null)}
-          className='absolute flex items-center justify-center p-2 font-bold text-black transition-colors duration-150 transform bg-red-600 rounded-full hover:bg-red-900 top-4 right-4'
+          className='absolute flex items-center justify-center p-2 font-bold text-black transition-colors duration-150 transform bg-red-600 rounded-full hover:bg-red-900 top-2 right-2'
         >
           <FaTimes className='w-3 h-3 text-white' />
         </button>
