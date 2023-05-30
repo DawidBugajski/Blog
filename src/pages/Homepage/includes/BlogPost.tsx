@@ -15,6 +15,10 @@ function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
+  const [isDeleteWarningVisible, setDeleteWarningVisible] = useState<{
+    visible: boolean;
+    postId: string | null;
+  }>({ visible: false, postId: null });
 
   const handleClick = (post: Post) => {
     navigate(`/${post.slug}`, { state: { post } });
@@ -36,7 +40,16 @@ function BlogPost({ data }: BlogPostProps) {
   );
 
   const handleDeletePost = (id: string) => {
+    setDeleteWarningVisible({ visible: true, postId: id });
+  };
+
+  const handleConfirmDeletePost = (id: string) => {
     deletePostMutation.mutate(id);
+    setDeleteWarningVisible({ visible: false, postId: null });
+  };
+
+  const handleCancelDeletePost = () => {
+    setDeleteWarningVisible({ visible: false, postId: null });
   };
 
   const handleStartEditing = (post: Post) => {
@@ -49,7 +62,7 @@ function BlogPost({ data }: BlogPostProps) {
         const { id, image, title, excerpt, user } = post;
         const { firstName, lastName } = user;
         const imageUrl = getPlaceholderImage(image || '');
-        const postClassName = i < 5 ? 'bg-[#EBF0F5]' : '';
+        const postClassName = i < 5 ? 'bg-[#EBF0F5] ' : '';
 
         if (editingPost && post.id === editingPost.id) {
           return (
@@ -96,19 +109,42 @@ function BlogPost({ data }: BlogPostProps) {
               {isLoggedIn && (
                 <div className='flex gap-4 my-3'>
                   <Button
-                    className='w-10 p-3 text-white bg-green-600 rounded-full right-16 lg:absolute bottom-4 hover:bg-green-700'
+                    className='w-10 p-3 text-white bg-gray-400 rounded-full right-16 lg:absolute bottom-4 hover:bg-gray-700'
                     onClick={() => handleStartEditing(post)}
                   >
                     <FaEdit />
                   </Button>
                   <Button
-                    className='w-10 p-3 text-white transition-colors duration-150 bg-red-800 rounded-full lg:absolute right-4 bottom-4 hover:text-red-500 hover:bg-black'
+                    className='w-10 p-3 text-white transition-colors duration-150 bg-gray-400 rounded-full lg:absolute right-4 bottom-4 hover:bg-gray-700'
                     onClick={() => handleDeletePost(id)}
                   >
                     <FaTrash />
                   </Button>
                 </div>
               )}
+              {isLoggedIn &&
+                isDeleteWarningVisible.visible &&
+                isDeleteWarningVisible.postId === id && (
+                  <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50'>
+                    <div className='w-10/12 p-8 bg-white rounded h-[95%] sm:h-full'>
+                      <h2 className='mb-4 text-lg'>
+                        Are you sure you want to delete this post?
+                      </h2>
+                      <Button
+                        onClick={handleCancelDeletePost}
+                        className='w-full p-2 text-white transition-colors duration-150 bg-gray-600 rounded hover:bg-gray-700'
+                      >
+                        No
+                      </Button>
+                      <Button
+                        onClick={() => handleConfirmDeletePost(id)}
+                        className='w-full p-2 mt-3 text-white transition-colors duration-150 bg-red-600 rounded sm:mt-5 hover:bg-red-700'
+                      >
+                        Yes
+                      </Button>
+                    </div>
+                  </div>
+                )}
             </div>
           </div>
         );
