@@ -15,7 +15,6 @@ function App() {
         <PageRoutes />
         {isOpen && <LoginModal />}
       </div>
-
       <Footer />
     </div>
   );
