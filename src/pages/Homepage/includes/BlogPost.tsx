@@ -126,7 +126,7 @@ function BlogPost({ data }: BlogPostProps) {
                 isDeleteWarningVisible.visible &&
                 isDeleteWarningVisible.postId === id && (
                   <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50'>
-                    <div className='w-10/12 p-8 bg-white rounded h-[95%] sm:h-full'>
+                    <div className='w-full h-full p-8 bg-white sm:w-10/12 sm:rounded sm:h-auto'>
                       <h2 className='mb-4 text-lg'>
                         Are you sure you want to delete this post?
                       </h2>
