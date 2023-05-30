@@ -21,7 +21,7 @@ function BlogPost({ data }: BlogPostProps) {
   };
 
   const queryClient = useQueryClient();
-  const mutation = useMutation(
+  const deletePostMutation = useMutation(
     (id: string) => {
       const token = localStorage.getItem('token');
       return axios.delete(`${API_BASE_URL}post/${id}`, {
@@ -36,7 +36,7 @@ function BlogPost({ data }: BlogPostProps) {
   );
 
   const handleDeletePost = (id: string) => {
-    mutation.mutate(id);
+    deletePostMutation.mutate(id);
   };
 
   const handleStartEditing = (post: Post) => {
@@ -49,7 +49,7 @@ function BlogPost({ data }: BlogPostProps) {
         const { id, image, title, excerpt, user } = post;
         const { firstName, lastName } = user;
         const imageUrl = getPlaceholderImage(image || '');
-        const postClassName = i < 5 ? 'bg-[#EBF0F5] ' : '';
+        const postClassName = i < 5 ? 'bg-[#EBF0F5]' : '';
 
         if (editingPost && post.id === editingPost.id) {
           return (
