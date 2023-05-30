@@ -27,12 +27,14 @@ export const loginSlice = createSlice({
       state.token = action.payload.token;
       state.user = action.payload.user;
       localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('user', JSON.stringify(action.payload.user));
     },
     setLoggedOut: (state) => {
       state.isLoggedIn = false;
       state.token = null;
       state.user = null;
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
   },
 });

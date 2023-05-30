@@ -3,15 +3,19 @@ import loginReducer, { initialState } from './slices/loginSlice';
 import { LoginProps } from 'src/types/loginTypes';
 
 const token = localStorage.getItem('token');
+const user = localStorage.getItem('user')
+  ? JSON.parse(localStorage.getItem('user') as string)
+  : null;
 
 let preloadedState: { login: LoginProps };
 
-if (token) {
+if (token && user) {
   preloadedState = {
     login: {
       ...initialState,
       isLoggedIn: true,
       token: token,
+      user: user,
     },
   };
 } else {

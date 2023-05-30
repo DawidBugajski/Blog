@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Post, BlogPostProps } from 'src/types/postTypes';
 import { getPlaceholderImage } from 'src/utils/helpers/getPlaceholderImage';
 import { useAppSelector } from 'src/redux/hooks';
-import { selectIsLoggedIn } from 'src/redux/slices/loginSlice';
+import { selectIsLoggedIn, selectUser } from 'src/redux/slices/loginSlice';
 import { API_BASE_URL } from 'src/utils/constans';
 import axios from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -14,6 +14,7 @@ import { FaTrash, FaEdit, FaArrowRight } from 'react-icons/fa';
 function BlogPost({ data }: BlogPostProps) {
   const navigate = useNavigate();
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const loggedUser = useAppSelector(selectUser);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [isDeleteWarningVisible, setDeleteWarningVisible] = useState<{
     visible: boolean;
@@ -108,18 +109,23 @@ function BlogPost({ data }: BlogPostProps) {
               </Button>
               {isLoggedIn && (
                 <div className='flex gap-4 my-3'>
-                  <Button
+                  <button
                     className='w-10 p-3 text-white bg-gray-400 rounded-full right-16 lg:absolute bottom-4 hover:bg-gray-700'
                     onClick={() => handleStartEditing(post)}
                   >
                     <FaEdit />
-                  </Button>
-                  <Button
-                    className='w-10 p-3 text-white transition-colors duration-150 bg-gray-400 rounded-full lg:absolute right-4 bottom-4 hover:bg-gray-700'
+                  </button>
+                  <button
+                    className={`w-10 p-3 text-white transition-colors duration-150 rounded-full lg:absolute right-4 bottom-4 bg-gray-400 hover:bg-gray-700 ${
+                      loggedUser?.id !== post.user.id
+                        ? 'cursor-not-allowed'
+                        : 'cursor-pointer'
+                    }`}
                     onClick={() => handleDeletePost(id)}
+                    disabled={loggedUser?.id !== post.user.id}
                   >
                     <FaTrash />
-                  </Button>
+                  </button>
                 </div>
               )}
               {isLoggedIn &&
