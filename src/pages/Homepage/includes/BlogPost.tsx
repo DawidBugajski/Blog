@@ -37,7 +37,6 @@ function BlogPost({ data }: BlogPostProps) {
 
   const handleDeletePost = (id: string) => {
     mutation.mutate(id);
-    console.log(`deleted post ${id}`);
   };
 
   const handleStartEditing = (post: Post) => {

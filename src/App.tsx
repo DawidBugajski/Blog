@@ -2,7 +2,7 @@ import React from 'react';
 import PageRoutes from './routes/PageRoutes';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import LoginModal from './pages/Homepage/components/LoginModal';
+import LoginModal from './pages/Homepage/includes/LoginModal';
 import { selectOpenLoginModal } from 'src/redux/slices/loginSlice';
 import { useAppSelector } from 'src/redux/hooks';
 

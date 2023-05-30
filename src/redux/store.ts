@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import PostDetailsReducer from '../redux/slices/postDetailsSlice';
 import loginReducer, { initialState } from './slices/loginSlice';
 import { LoginProps } from 'src/types/loginTypes';
 
@@ -23,7 +22,6 @@ if (token) {
 
 export const store = configureStore({
   reducer: {
-    selectedPost: PostDetailsReducer,
     login: loginReducer,
   },
   preloadedState, // adding loaded data to store configuration

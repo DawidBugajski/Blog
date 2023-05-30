@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import BlogPost from './BlogPost';
 import { useQuery } from '@tanstack/react-query';
 import { API_BASE_URL, POSTS_NUMBER } from 'src/utils/constans';
-import SkeletonLoader from 'src/components/SkeletonLoader';
+import SkeletonLoader from 'src/pages/Homepage/includes/SkeletonLoader';
 
 function BlogPosts() {
   const { isLoading, error, data } = useQuery({

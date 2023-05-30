@@ -51,7 +51,7 @@ function LoginModal() {
         onClick={handleCloseModal}
         className='absolute inset-0 bg-black opacity-75'
       ></div>
-      <div className='relative z-10 p-[2px] bg-blue-500 rounded-lg w-full md:w-auto'>
+      <div className='relative z-10 p-[2px] bg-blue-500 rounded-lg w-full  sm:w-3/4 md:w-auto'>
         <div className='md:min-h-[350px] md:w-[500px] flex flex-col gap-2 p-8 font-mono text-lg text-white bg-black rounded-lg '>
           <h2 className='mb-4 text-xl font-bold text-center'>Login</h2>
           <form onSubmit={handleSubmit}>

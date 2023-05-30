@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-import Homepage from 'src/pages/Homepage/Homepage';
-import AboutMe from 'src/pages/AboutMe/AboutMe';
-import Contact from 'src/pages/Contact/Contact';
-import PostDetails from 'src/pages/PostDetails/PostDetails';
+import Homepage from 'src/pages/Homepage';
+import AboutMe from 'src/pages/AboutMe';
+import Contact from 'src/pages/Contact';
+import PostDetails from 'src/pages/PostDetails';
 import Error from 'src/components/Error';
-import Inspirations from 'src/pages/Inspirations/Inspirations';
+import Inspirations from 'src/pages/Inspirations';
 
 function PageRoutes() {
   return (

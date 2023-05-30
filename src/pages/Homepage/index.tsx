@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BlogPosts from './components/BlogPosts';
+import BlogPosts from './includes/BlogPosts';
 import Button from 'src/components/Button';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
