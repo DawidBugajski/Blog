@@ -1,57 +1,45 @@
-# Recruitment task - blog home page
+# This is the home page of the blog, which allows logged-in users to manage blog entries.
 
-This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) + [Tailwind](https://tailwindcss.com/) + [RTK](https://redux-toolkit.js.org/) + [eslint](https://eslint.org/) boilerplate built with [Vite](https://vitejs.dev).
+This is a solution to the [REST Countries API with color theme switcher on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca/hub). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## What's inside?
+## Table of contents
 
-- [ReactJS](https://reactjs.org)
-- [Vite](https://vitejs.dev)
-- [TypeScript](https://www.typescriptlang.org)
-- [Tailwind](https://tailwindcss.com/)
-- [RTK](https://redux-toolkit.js.org/)
-- [ESLint](https://eslint.org)
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-## Getting started
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-1. Clone the repository.
+## Overview
 
-   ```bash
-   git clone https://github.com/IsaiaPhiliph/vite-reactts-tailwind-rtk-eslint.git
-   ```
+### The challenge
 
-2. Access the project.
+Logged-in users can view, edit and add new blog posts. If a user attempts to delete a post, this is only possible for posts that the user has created.
 
-   ```bash
-   cd vite-reactts-tailwind-rtk-eslint
-   ```
+In addition, when clicking on a post, the user is taken to a new routing, where the details of the post are displayed.
 
-3. Make it your own repository
+The login credentials to enter the site as an administrator are:
+Email: admin@wp.pl
+Password: qwerty
 
-   ```bash
-   rm -rf .git
-   git init
-   ```
+### Links
 
-4. Install dependencies.
+- Live Site URL: [https://dawidbugajski.github.io/Blog/](https://dawidbugajski.github.io/Blog/)
 
-   ```bash
-   npm i
-   ```
+## My process
 
-5. Start the development server.
+### Built with
 
-   ```bash
-   npm run dev
-   ```
+- [React](https://reactjs.org/) - JS library
+- [React Query](https://tanstack.com/query/latest/docs/react/overview/) - A library used to manage data
+- [React Router](https://reactrouter.com/en/main) - A library used to navigate React applications.
+- [RTK](https://redux-toolkit.js.org/) - A library used to managing the global state of the application
+- [Tailwindcss](https://tailwindcss.com/) - Styling
 
-6. Build for production.
+## Author
 
-   ```bash
-   npm run build
-   ```
-
-7. Test your production build.
-
-   ```bash
-   npm run serve
-   ```
+- Github - [DawidBugajski](https://github.com/DawidBugajski)
+- Linkedin - [DawidBugajski](https://www.linkedin.com/in/dawidbugajski96/)
