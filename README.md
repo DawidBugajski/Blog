@@ -1,6 +1,6 @@
 # This is the home page of the blog, which allows logged-in users to manage blog entries.
 
-This is a solution to the [REST Countries API with color theme switcher on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca/hub). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is for a recruitment assignment for a frontend developer position
 
 ## Table of contents
 
@@ -11,8 +11,6 @@ This is a solution to the [REST Countries API with color theme switcher on Front
   - [Built with](#built-with)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -22,8 +20,9 @@ Logged-in users can view, edit and add new blog posts. If a user attempts to del
 In addition, when clicking on a post, the user is taken to a new routing, where the details of the post are displayed.
 
 The login credentials to enter the site as an administrator are:
-Email: admin@wp.pl
-Password: qwerty
+
+**Email: admin@wp.pl
+**Password: qwerty
 
 ### Links
 
@@ -38,6 +37,7 @@ Password: qwerty
 - [React Router](https://reactrouter.com/en/main) - A library used to navigate React applications.
 - [RTK](https://redux-toolkit.js.org/) - A library used to managing the global state of the application
 - [Tailwindcss](https://tailwindcss.com/) - Styling
+- [Typescript](https://www.typescriptlang.org/) - Strong typing and improve code quality of Javascript
 
 ## Author
 
