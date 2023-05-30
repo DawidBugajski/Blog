@@ -18,7 +18,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename='/Blog'>
+        <BrowserRouter basename='/Blog/'>
           <App />
         </BrowserRouter>
       </QueryClientProvider>
