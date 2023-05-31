@@ -6,7 +6,7 @@ import {
   setLoggedOut,
 } from 'src/redux/slices/loginSlice';
 
-import Navbar from 'src/pages/Homepage/includes/Navbar';
+import Navbar from 'src/components/Navbar';
 import Button from './Button';
 import Logo from './Logo';
 
